@@ -23,7 +23,6 @@
       --maroon-dark: #4a0614;
       --cream: #fdfaf3;
       --ivory: #fffaf0;
-      --paper: rgba(255, 252, 246, 0.94);
       --text-dark: #2c1e1a;
       --text-muted: #57463f;
       --line: rgba(179,135,40,0.42);
@@ -52,7 +51,7 @@
       inset: 0;
       pointer-events: none;
       z-index: 1;
-      opacity: 0.28;
+      opacity: 0.22;
       background-image:
         radial-gradient(rgba(110,16,36,0.08) 0.6px, transparent 0.6px),
         radial-gradient(rgba(179,135,40,0.07) 0.6px, transparent 0.6px);
@@ -70,9 +69,9 @@
       z-index: 25;
     }
 
-    /* =========================
-       ENVELOPE — LUXURY OPENING
-       ========================= */
+    /* =========================================================
+       ENVELOPE — CLEAN LUXURY OPENING
+       ========================================================= */
     #envelopeOverlay {
       position: fixed;
       inset: 0;
@@ -80,8 +79,8 @@
       height: 100vh;
       height: 100dvh;
       background:
-        radial-gradient(circle at 50% 45%, rgba(126,35,54,0.42), transparent 28%),
-        linear-gradient(145deg, #320912 0%, #170207 55%, #0e0104 100%);
+        radial-gradient(circle at center, rgba(126,35,54,0.36), transparent 30%),
+        linear-gradient(145deg, #320912 0%, #170207 58%, #0e0104 100%);
       z-index: 999;
       display: flex;
       justify-content: center;
@@ -98,14 +97,14 @@
       pointer-events: none;
       width: min(620px, 88vw);
       height: min(620px, 88vw);
-      border: 1px solid rgba(247,231,169,0.13);
+      border: 1px solid rgba(247,231,169,0.12);
       border-radius: 50%;
     }
 
     #envelopeOverlay::after {
       width: min(470px, 72vw);
       height: min(470px, 72vw);
-      border-color: rgba(247,231,169,0.08);
+      border-color: rgba(247,231,169,0.07);
     }
 
     #envelopeOverlay.hidden {
@@ -118,8 +117,7 @@
       position: relative;
       width: min(390px, 90vw);
       height: 248px;
-      background:
-        linear-gradient(135deg, #d9c7aa, #c8b596);
+      background: linear-gradient(135deg, #d9c7aa, #c8b596);
       border-radius: 10px;
       cursor: pointer;
       margin: auto;
@@ -139,6 +137,7 @@
       z-index: 6;
     }
 
+    /* The pocket edges are deliberately kept clean so no stray line cuts through the envelope. */
     .envelope-flap {
       position: absolute;
       top: 0;
@@ -151,7 +150,7 @@
       transform-origin: top center;
       transition: transform 0.78s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 4;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.22));
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.18));
     }
 
     .envelope-pocket {
@@ -163,24 +162,23 @@
       pointer-events: none;
     }
 
-    .envelope-pocket::before {
+    .envelope-pocket::before,
+    .envelope-pocket::after {
       content: "";
       position: absolute;
       bottom: 0;
-      left: 0;
       width: 0;
       height: 0;
+    }
+
+    .envelope-pocket::before {
+      left: 0;
       border-bottom: 150px solid #f0e2cb;
       border-right: min(195px, 45vw) solid transparent;
     }
 
     .envelope-pocket::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
       right: 0;
-      width: 0;
-      height: 0;
       border-bottom: 150px solid #dfceb3;
       border-left: min(195px, 45vw) solid transparent;
     }
@@ -215,8 +213,7 @@
       width: 76px;
       height: 76px;
       border-radius: 50%;
-      background:
-        radial-gradient(circle at 35% 30%, #a62949 0%, #74132b 34%, #4a0614 100%);
+      background: radial-gradient(circle at 35% 30%, #a62949 0%, #74132b 34%, #4a0614 100%);
       border: 2px solid #d2a83f;
       display: grid;
       place-items: center;
@@ -229,6 +226,8 @@
         inset 0 2px 4px rgba(255,255,255,0.18);
     }
 
+    .wax-seal:hover { transform: translateX(-50%) scale(1.06); }
+
     .wax-seal span {
       font-family: "Great Vibes", cursive;
       font-size: 25px;
@@ -236,8 +235,6 @@
       user-select: none;
       line-height: 1;
     }
-
-    .wax-seal:hover { transform: translateX(-50%) scale(1.06); }
 
     #envelopeOverlay.opened .envelope-flap {
       transform: rotateX(180deg);
@@ -258,9 +255,9 @@
       50% { box-shadow: 0 7px 22px rgba(0,0,0,0.48), 0 0 0 9px rgba(179,135,40,0); }
     }
 
-    /* =========================
-       SECTIONS
-       ========================= */
+    /* =========================================================
+       PAGE SECTIONS
+       ========================================================= */
     section {
       min-height: 100vh;
       min-height: 100dvh;
@@ -290,25 +287,25 @@
 
     .sec-shubharambh {
       background-image:
-        linear-gradient(rgba(255,250,242,0.68), rgba(255,250,242,0.84)),
+        linear-gradient(rgba(255,250,242,0.66), rgba(255,250,242,0.82)),
         url('bg-arch.jpg');
     }
 
     .sec-itinerary {
       background-image:
-        linear-gradient(rgba(255,250,242,0.78), rgba(255,250,242,0.90)),
+        linear-gradient(rgba(255,250,242,0.77), rgba(255,250,242,0.90)),
         url('bg-mandap.jpg');
     }
 
     .sec-countdown {
       background-image:
-        linear-gradient(rgba(255,250,242,0.72), rgba(255,250,242,0.88)),
+        linear-gradient(rgba(255,250,242,0.70), rgba(255,250,242,0.88)),
         url('bg-hero.jpg');
     }
 
     .sec-family {
       background-image:
-        linear-gradient(rgba(255,250,242,0.76), rgba(255,250,242,0.90)),
+        linear-gradient(rgba(255,250,242,0.74), rgba(255,250,242,0.90)),
         url('bg-floral.jpg');
     }
 
@@ -339,7 +336,6 @@
       display: block;
     }
 
-    /* Elegant ornamental divider */
     .kicker::after {
       content: "  ✦";
       color: var(--gold);
@@ -347,9 +343,9 @@
       letter-spacing: 1px;
     }
 
-    /* =========================
-       HERO / GANESHA
-       ========================= */
+    /* =========================================================
+       HERO
+       ========================================================= */
     .sec-shubharambh .wrap {
       display: flex;
       flex-direction: column;
@@ -361,7 +357,7 @@
       width: min(94%, 500px);
       margin: 0 auto;
       background:
-        linear-gradient(rgba(255,253,248,0.92), rgba(255,253,248,0.92)),
+        linear-gradient(rgba(255,253,248,0.91), rgba(255,253,248,0.91)),
         url('bg-arch.jpg');
       border: 1px solid var(--gold);
       border-radius: 220px 220px 24px 24px;
@@ -387,12 +383,12 @@
     .ganesha-frame::after { right: 25px; }
 
     .ganesha-card-img {
-      max-width: 195px;
-      width: 48%;
+      max-width: 225px;
+      width: 55%;
       border-radius: 8px;
       border: none;
       display: block;
-      margin: 0 auto 16px;
+      margin: 0 auto 17px;
       filter: drop-shadow(0 9px 15px rgba(74,6,20,0.10));
     }
 
@@ -453,9 +449,9 @@
       letter-spacing: 0.4px;
     }
 
-    /* =========================
+    /* =========================================================
        EVENTS
-       ========================= */
+       ========================================================= */
     .events-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
@@ -511,27 +507,27 @@
 
     .card-haldi {
       border-top: 3px solid #e6a100;
-      background-image: linear-gradient(rgba(255,255,255,0.45), rgba(255,252,244,0.67)), url('card-haldi-bg.jpg');
+      background-image: linear-gradient(rgba(255,255,255,0.43), rgba(255,252,244,0.65)), url('card-haldi-bg.jpg');
     }
 
     .card-mehendi {
       border-top: 3px solid #2d7a46;
-      background-image: linear-gradient(rgba(255,255,255,0.50), rgba(255,252,244,0.70)), url('card-mehendi-bg.jpg');
+      background-image: linear-gradient(rgba(255,255,255,0.48), rgba(255,252,244,0.68)), url('card-mehendi-bg.jpg');
     }
 
     .card-wedding {
       border-top: 3px solid var(--maroon);
-      background-image: linear-gradient(rgba(255,255,255,0.42), rgba(255,252,244,0.64)), url('card-wedding-bg.jpg');
+      background-image: linear-gradient(rgba(255,255,255,0.40), rgba(255,252,244,0.62)), url('card-wedding-bg.jpg');
     }
 
     .card-baraat {
       border-top: 3px solid #c0392b;
-      background-image: linear-gradient(rgba(255,255,255,0.44), rgba(255,252,244,0.66)), url('card-baraat-bg.jpg');
+      background-image: linear-gradient(rgba(255,255,255,0.42), rgba(255,252,244,0.64)), url('card-baraat-bg.jpg');
     }
 
     .card-reception {
       border-top: 3px solid #7d3c98;
-      background-image: linear-gradient(rgba(255,255,255,0.44), rgba(255,252,244,0.66)), url('card-reception-bg.jpg');
+      background-image: linear-gradient(rgba(255,255,255,0.42), rgba(255,252,244,0.64)), url('card-reception-bg.jpg');
     }
 
     .event-card h3 {
@@ -616,9 +612,9 @@
 
     .action-btn.primary:hover { background: var(--maroon-dark); }
 
-    /* =========================
+    /* =========================================================
        COUNTDOWN
-       ========================= */
+       ========================================================= */
     .countdown-box {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -661,9 +657,9 @@
       display: block;
     }
 
-    /* =========================
-       FAMILIES
-       ========================= */
+    /* =========================================================
+       FAMILY
+       ========================================================= */
     .family-split {
       display: grid;
       grid-template-columns: 1fr 1px 1fr;
@@ -671,8 +667,7 @@
       align-items: center;
       max-width: 880px;
       margin: 40px auto 0;
-      background:
-        linear-gradient(rgba(255,255,255,0.83), rgba(255,255,255,0.83));
+      background: rgba(255,255,255,0.83);
       padding: 46px 28px;
       border-radius: 22px;
       border: 1px solid var(--gold);
@@ -710,14 +705,14 @@
       color: var(--text-muted);
     }
 
-    /* =========================
+    /* =========================================================
        RSVP
-       ========================= */
+       ========================================================= */
     .rsvp-section {
       min-height: 80vh;
       background:
         radial-gradient(circle at 50% 0%, rgba(179,135,40,0.09), transparent 38%),
-        #fffcf8;
+        #fffcf8 !important;
     }
 
     .rsvp-card {
@@ -779,9 +774,9 @@
       box-shadow: 0 0 0 3px rgba(110,16,36,0.07);
     }
 
-    /* =========================
+    /* =========================================================
        FLOATING CONTROLS
-       ========================= */
+       ========================================================= */
     .music-btn {
       position: fixed;
       right: 20px;
@@ -827,14 +822,14 @@
     .reveal {
       opacity: 0;
       transform: translateY(28px);
-      transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.2,0.8,0.2,1);
     }
 
     .reveal.show { opacity: 1; transform: none; }
 
-    /* =========================
-       MOBILE
-       ========================= */
+    /* =========================================================
+       MOBILE — TWO-STAGE HERO
+       ========================================================= */
     @media (max-width: 600px) {
       section { padding: 54px 14px 48px; }
 
@@ -844,34 +839,120 @@
       }
 
       .sec-shubharambh {
-        min-height: 100dvh;
-        padding-top: 42px;
-        padding-bottom: 55px;
+        min-height: auto;
+        padding: 0 12px 54px;
+        justify-content: flex-start;
       }
 
-      .ganesha-frame {
-        width: 94%;
-        border-radius: 150px 150px 20px 20px;
-        padding: 32px 17px 24px;
+      .sec-shubharambh .wrap {
+        max-width: 100%;
       }
+
+      /* First mobile "page": Ganesha + shlok */
+      .ganesha-frame {
+        min-height: 100svh;
+        min-height: 100dvh;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 28px 12px 82px;
+        border-radius: 160px 160px 22px 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+      }
+
+      .ganesha-frame::before { left: 18px; top: 18px; }
+      .ganesha-frame::after { right: 18px; top: 18px; }
 
       .ganesha-card-img {
-        max-width: 185px;
-        width: 55%;
+        max-width: 310px;
+        width: 72%;
+        margin-bottom: 18px;
       }
 
+      .ganesha-frame h1 {
+        font-size: clamp(22px, 6vw, 29px) !important;
+      }
+
+      .ganesha-frame p {
+        font-size: clamp(15px, 4.2vw, 19px) !important;
+        line-height: 1.9 !important;
+      }
+
+      /* Strong, unmistakable scroll cue */
+      .ganesha-frame::after {
+        content: "✦\A SCROLL TO CONTINUE\A ↓";
+        white-space: pre;
+        width: 100%;
+        height: auto;
+        top: auto;
+        right: auto;
+        bottom: 22px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "DM Sans", sans-serif;
+        font-size: 8px;
+        line-height: 2.1;
+        letter-spacing: 2.5px;
+        text-align: center;
+        opacity: 0.72;
+        animation: scrollCue 2.4s ease-in-out infinite;
+      }
+
+      @keyframes scrollCue {
+        0%, 100% { opacity: 0.40; transform: translateX(-50%) translateY(0); }
+        50% { opacity: 0.90; transform: translateX(-50%) translateY(5px); }
+      }
+
+      /* Second mobile "page": couple gets the visual priority */
       .hero-names-block {
-        margin-top: 34px !important;
+        min-height: 100svh;
+        min-height: 100dvh;
+        width: 100%;
+        margin-top: 0 !important;
+        padding: 72px 7px 82px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .hero-names-block::before {
+        width: 150px;
+        margin-bottom: 30px;
+      }
+
+      .hero-names-block .kicker {
+        font-size: 9px;
+        letter-spacing: 3px;
+        margin-bottom: 28px;
       }
 
       .couple-names {
-        font-size: clamp(66px, 21vw, 105px);
-        line-height: 0.82;
-        margin-bottom: 21px;
+        font-size: clamp(82px, 24vw, 122px);
+        line-height: 0.78;
+        margin: 0 0 31px;
       }
 
       .couple-names .amp {
-        margin: 11px 0;
+        font-size: 0.29em;
+        margin: 16px 0;
+      }
+
+      .hero-names-block .date-pill {
+        font-size: 11px;
+        letter-spacing: 2.2px;
+        padding: 9px 15px;
+        margin-top: 6px;
+      }
+
+      .hero-invite-line {
+        max-width: 285px;
+        margin-top: 19px;
+        font-size: 19px;
+        line-height: 1.3;
       }
 
       .events-grid {
@@ -894,10 +975,7 @@
         border-radius: 15px;
       }
 
-      .count-unit {
-        padding: 15px 3px;
-      }
-
+      .count-unit { padding: 15px 3px; }
       .count-unit b { font-size: clamp(22px, 7vw, 33px); }
       .count-unit span { font-size: 7.5px; letter-spacing: 1.2px; }
 
@@ -991,6 +1069,7 @@
           <span>Chitra</span>
         </h2>
         <div class="date-pill">02 · DECEMBER · 2026</div>
+        <p class="hero-invite-line">invite you to celebrate their wedding</p>
       </div>
     </div>
   </section>
