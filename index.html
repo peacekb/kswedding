@@ -9,11 +9,11 @@
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="॥ श्री गणेशाय नमः ॥ Wedding Invitation: Kapil & Chitra">
-  <meta property="og:description" content="Together with our families, we warmly invite you to join our wedding celebrations.">
+  <meta property="og:description" content="Celebrating a new chapter in the lives of Kapil & Chitra.">
   <meta property="og:image" content="ganesh.jpg">
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap');
 
     :root {
       --gold: #b38728;
@@ -47,11 +47,12 @@
     }
 
     /* =========================================================
-       ENVELOPE OVERLAY — DEAD CENTER ON ALL DEVICES
+       ENVELOPE OVERLAY — TRUE CENTER ON ALL MOBILES
        ========================================================= */
     #envelopeOverlay {
       position: fixed;
-      inset: 0;
+      top: 0;
+      left: 0;
       width: 100vw;
       height: 100vh;
       height: 100dvh;
@@ -63,7 +64,6 @@
       perspective: 1000px;
       transition: opacity 0.8s ease 0.8s, visibility 0.8s ease 0.8s;
       padding: 16px;
-      box-sizing: border-box;
     }
     #envelopeOverlay.hidden {
       opacity: 0;
@@ -73,32 +73,30 @@
 
     .envelope-wrapper {
       position: relative;
-      width: min(360px, 90vw);
+      width: min(360px, 88vw);
       height: 230px;
       background: #cbbba1;
       border-radius: 12px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(179,135,40,0.3);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(179,135,40,0.3);
       cursor: pointer;
       margin: auto;
     }
 
-    /* Envelope Top Flap */
     .envelope-flap {
       position: absolute;
       top: 0;
       left: 0;
       width: 0;
       height: 0;
-      border-left: min(180px, 45vw) solid transparent;
-      border-right: min(180px, 45vw) solid transparent;
-      border-top: 130px solid #d8c7ad;
+      border-left: min(180px, 44vw) solid transparent;
+      border-right: min(180px, 44vw) solid transparent;
+      border-top: 125px solid #d8c7ad;
       transform-origin: top center;
       transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 4;
       filter: drop-shadow(0 3px 6px rgba(0,0,0,0.22));
     }
 
-    /* Envelope Pocket */
     .envelope-pocket {
       position: absolute;
       inset: 0;
@@ -114,8 +112,8 @@
       left: 0;
       width: 0;
       height: 0;
-      border-bottom: 140px solid #ecdcc4;
-      border-right: min(180px, 45vw) solid transparent;
+      border-bottom: 135px solid #ecdcc4;
+      border-right: min(180px, 44vw) solid transparent;
     }
     .envelope-pocket::after {
       content: "";
@@ -124,17 +122,16 @@
       right: 0;
       width: 0;
       height: 0;
-      border-bottom: 140px solid #e2d1b8;
-      border-left: min(180px, 45vw) solid transparent;
+      border-bottom: 135px solid #e2d1b8;
+      border-left: min(180px, 44vw) solid transparent;
     }
 
-    /* Letter inside sliding up */
     .envelope-letter {
       position: absolute;
-      top: 12px;
+      top: 15px;
       left: 4%;
       width: 92%;
-      height: 206px;
+      height: 200px;
       background: #fffdfa;
       border: 1px solid var(--gold);
       border-radius: 8px;
@@ -149,10 +146,9 @@
       z-index: 2;
     }
 
-    /* Wax Seal Button */
     .wax-seal {
       position: absolute;
-      top: 88px;
+      top: 82px;
       left: 50%;
       transform: translateX(-50%);
       width: 72px;
@@ -168,9 +164,7 @@
       transition: transform 0.25s ease, opacity 0.3s ease;
       animation: pulseMaroon 2.2s infinite;
     }
-    .wax-seal:hover {
-      transform: translateX(-50%) scale(1.06);
-    }
+    .wax-seal:hover { transform: translateX(-50%) scale(1.06); }
     .wax-seal span {
       font-family: "Great Vibes", cursive;
       font-size: 24px;
@@ -179,18 +173,14 @@
       line-height: 1;
     }
 
-    /* Envelope Opened States */
-    #envelopeOverlay.opened .envelope-flap {
-      transform: rotateX(180deg);
-      z-index: 1;
+    @keyframes pulseMaroon {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(179, 135, 40, 0.5); }
+      50% { box-shadow: 0 0 0 12px rgba(179, 135, 40, 0); }
     }
-    #envelopeOverlay.opened .wax-seal {
-      opacity: 0;
-      pointer-events: none;
-    }
-    #envelopeOverlay.opened .envelope-letter {
-      transform: translateY(-80px) scale(1.02);
-    }
+
+    #envelopeOverlay.opened .envelope-flap { transform: rotateX(180deg); z-index: 1; }
+    #envelopeOverlay.opened .wax-seal { opacity: 0; pointer-events: none; }
+    #envelopeOverlay.opened .envelope-letter { transform: translateY(-80px) scale(1.02); }
 
     /* =========================================================
        PAGE SECTIONS
@@ -203,120 +193,10 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 50px 18px 45px;
+      padding: 50px 18px;
       background-size: cover;
       background-position: center top;
       background-repeat: no-repeat;
-    }
-
-   /* PAGE 1: Ganesha Dedicated Screen */
-    .sec-ganesha {
-      min-height: 100dvh;
-      background-image: linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.85)), url('bg-arch.jpg');
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 30px 18px;
-    }
-
-    /* Grand Jharokha Arch Frame */
-    .ganesha-frame {
-      max-width: 440px;
-      width: 90vw;
-      margin: 0 auto;
-      background: rgba(255, 253, 248, 0.96);
-      border: 2px solid var(--gold);
-      /* Royal Jharokha Arch Top */
-      border-radius: 120px 120px 20px 20px;
-      padding: 42px 24px 34px;
-      box-shadow: 0 16px 45px rgba(110, 16, 36, 0.12), 0 0 0 6px rgba(255,255,255,0.6);
-      outline: 1px dashed rgba(179, 135, 40, 0.4);
-      outline-offset: -8px;
-      backdrop-filter: blur(5px);
-    }
-
-    /* Ganesha icon is now big and proud */
-    .ganesha-card-img {
-      max-width: 190px;
-      width: 55%;
-      border-radius: 12px;
-      display: block;
-      margin: 0 auto 18px;
-      border: none;
-      box-shadow: none;
-      filter: drop-shadow(0 4px 12px rgba(179, 135, 40, 0.25));
-    }
-
-    .shloka-title {
-      color: var(--maroon);
-      font-size: clamp(24px, 5.5vw, 34px);
-      font-weight: 700;
-      margin-bottom: 12px;
-      letter-spacing: 1px;
-    }
-
-    .shloka-text {
-      color: var(--text-dark);
-      font-size: clamp(16px, 4vw, 21px);
-      line-height: 1.9;
-      font-weight: 500;
-      max-width: 420px;
-      margin: 0 auto;
-    }
-
-    .scroll-hint {
-      margin-top: 24px;
-      color: var(--gold);
-      font-size: 14px;
-      letter-spacing: 4px;
-      opacity: 0.8;
-      animation: bounceSlow 2s infinite ease-in-out;
-    }
-    @keyframes bounceSlow {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(6px); }
-    }
-
-    /* PAGE 2: Grand Couple Screen */
-    .sec-couple {
-      min-height: 100dvh;
-      background-image: linear-gradient(rgba(255,255,255,0.78), rgba(255,255,255,0.88)), url('bg-arch.jpg');
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 18px;
-    }
-
-    .couple-names {
-      font-size: clamp(64px, 16vw, 130px);
-      line-height: 0.9;
-      font-weight: 400;
-      margin: 20px 0 16px;
-      color: var(--maroon);
-    }
-
-    .couple-names .amp {
-      display: block;
-      font-size: 0.35em;
-      color: var(--gold);
-      margin: 10px 0;
-    }
-
-    .date-pill {
-      display: inline-block;
-      font-family: "Cinzel Decorative", serif;
-      font-size: clamp(15px, 3.8vw, 22px);
-      letter-spacing: 3.5px;
-      color: var(--maroon);
-      border-top: 2px solid var(--gold);
-      border-bottom: 2px solid var(--gold);
-      padding: 10px 30px;
-      margin-top: 18px;
-      font-weight: 700;
-      background: rgba(255, 255, 255, 0.92);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     }
 
     .wrap {
@@ -331,10 +211,10 @@
     .script { font-family: "Great Vibes", cursive; }
     .serif { font-family: "Cormorant Garamond", serif; }
     .sanskrit { font-family: "Tiro Devanagari Sanskrit", serif; }
-    .numeral { font-family: "Cinzel Decorative", "DM Sans", serif; font-feature-settings: "lnum" 1; }
+    .numeral { font-family: "Cinzel Decorative", "DM Sans", serif; }
 
     .kicker {
-      font-size: 11px;
+      font-size: 11.5px;
       letter-spacing: 3.5px;
       text-transform: uppercase;
       color: var(--maroon);
@@ -343,60 +223,137 @@
       display: block;
     }
 
-    /* Ganesha Frame — Centered & Protected on Mobile */
-    .ganesha-frame {
-      max-width: 460px;
-      width: 94%;
-      margin: 10px auto 18px;
-      background: rgba(255, 253, 248, 0.95);
-      border: 2px solid var(--gold);
-      border-radius: 90px 90px 18px 18px;
-      padding: 30px 20px 22px;
-      box-shadow: 0 14px 40px rgba(0,0,0,0.08);
-      outline: 1px dashed rgba(179, 135, 40, 0.4);
-      outline-offset: -6px;
+    /* =========================================================
+       PAGE 1: AUSPICIOUS GANESHA SCREEN (LARGE & GRAND)
+       ========================================================= */
+    .sec-ganesha {
+      background-image: linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.85)), url('bg-arch.jpg');
     }
 
+    .ganesha-frame {
+      max-width: 500px;
+      width: min(500px, 92vw);
+      margin: 0 auto;
+      background: rgba(255, 253, 248, 0.96);
+      border: 2px solid var(--gold);
+      border-radius: 140px 140px 22px 22px;
+      padding: 44px 24px 34px;
+      box-shadow: 0 16px 45px rgba(110, 16, 36, 0.12), 0 0 0 6px rgba(255,255,255,0.65);
+      outline: 1px dashed rgba(179, 135, 40, 0.45);
+      outline-offset: -8px;
+      backdrop-filter: blur(5px);
+    }
+
+    /* Large Lord Ganesha Image */
     .ganesha-card-img {
-      max-width: 180px;
-      width: 48%;
-      border-radius: 8px;
-      border: none;
+      max-width: 290px;
+      width: 72%;
+      height: auto;
       display: block;
-      margin: 0 auto 12px;
+      margin: 0 auto 16px;
+      border: none;
+      box-shadow: none;
+      background: transparent;
+      filter: drop-shadow(0 6px 14px rgba(179, 135, 40, 0.28));
+    }
+
+    .shloka-title {
+      color: var(--maroon);
+      font-size: clamp(22px, 5vw, 32px);
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .shloka-text {
+      color: var(--text-dark);
+      font-size: clamp(15px, 3.8vw, 20px);
+      line-height: 1.85;
+      font-weight: 500;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .scroll-hint {
+      margin-top: 24px;
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 5px;
+      animation: bounceSlow 2s infinite ease-in-out;
+    }
+    @keyframes bounceSlow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* =========================================================
+       PAGE 2: GRAND COUPLE SCREEN
+       ========================================================= */
+    .sec-couple {
+      background-image: linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.85)), url('bg-arch.jpg');
+    }
+
+    .sec-couple .kicker {
+      font-size: clamp(11.5px, 3.2vw, 15px);
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--maroon);
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: block;
     }
 
     .couple-names {
-      font-size: clamp(52px, 12vw, 110px);
-      line-height: 0.92;
+      font-size: clamp(86px, 24vw, 155px);
+      line-height: 0.82;
       font-weight: 400;
-      margin: 18px 0 12px;
+      margin: 15px 0 10px;
       color: var(--maroon);
+      letter-spacing: 1px;
     }
+
     .couple-names .amp {
       display: block;
-      font-size: 0.35em;
+      font-size: 0.34em;
       color: var(--gold);
       margin: 6px 0;
+      font-family: "Great Vibes", cursive;
+    }
+
+    .invite-subtext {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(18px, 4.5vw, 26px);
+      font-style: italic;
+      color: var(--text-muted);
+      margin-top: 4px;
+      margin-bottom: 22px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
     }
 
     .date-pill {
       display: inline-block;
       font-family: "Cinzel Decorative", serif;
-      font-size: clamp(13px, 3vw, 19px);
-      letter-spacing: 3px;
+      font-size: clamp(15px, 4.2vw, 22px);
+      letter-spacing: 3.5px;
       color: var(--maroon);
       border-top: 2px solid var(--gold);
       border-bottom: 2px solid var(--gold);
-      padding: 7px 22px;
-      margin-top: 12px;
+      padding: 10px 24px;
       font-weight: 700;
-      background: rgba(255,255,255,0.92);
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      width: min(420px, 92vw);
     }
 
     /* =========================================================
-       EVENTS GRID & CARDS
+       SECTION 3: CELEBRATIONS ITINERARY & CARDS
        ========================================================= */
+    .sec-itinerary {
+      background-image: linear-gradient(rgba(255, 252, 245, 0.88), rgba(255, 252, 245, 0.94)), url('bg-mandap.jpg');
+      padding: 75px 18px;
+    }
+
     .events-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -431,19 +388,19 @@
     }
     .card-mehendi {
       border-top: 6px solid #2d7a46;
-      background-image: linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.75)), url('card-mehendi-bg.jpg');
+      background-image: linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.7)), url('card-mehendi-bg.jpg');
     }
     .card-wedding {
       border-top: 6px solid var(--maroon);
-      background-image: linear-gradient(rgba(255,255,255,0.55), rgba(255,255,255,0.7)), url('card-wedding-bg.jpg');
+      background-image: linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.7)), url('card-wedding-bg.jpg');
     }
     .card-baraat {
       border-top: 6px solid #c0392b;
-      background-image: linear-gradient(rgba(255,255,255,0.55), rgba(255,255,255,0.7)), url('card-baraat-bg.jpg');
+      background-image: linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.7)), url('card-baraat-bg.jpg');
     }
     .card-reception {
       border-top: 6px solid #7d3c98;
-      background-image: linear-gradient(rgba(255,255,255,0.55), rgba(255,255,255,0.7)), url('card-reception-bg.jpg');
+      background-image: linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.7)), url('card-reception-bg.jpg');
     }
 
     .event-card h3 {
@@ -502,8 +459,13 @@
     .action-btn.primary:hover { background: var(--maroon-dark); }
 
     /* =========================================================
-       COUNTDOWN TIMER GRID
+       SECTION 4: COUNTDOWN
        ========================================================= */
+    .sec-countdown {
+      background-image: linear-gradient(rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.9)), url('bg-hero.jpg');
+      padding: 75px 18px;
+    }
+
     .countdown-box {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -522,8 +484,8 @@
       text-align: center;
     }
     .count-unit b {
-      font-family: "Cinzel Decorative", "DM Sans", serif;
-      font-size: clamp(26px, 6vw, 42px);
+      font-family: "Cinzel Decorative", serif;
+      font-size: clamp(26px, 6vw, 40px);
       line-height: 1;
       display: block;
       color: var(--maroon);
@@ -539,7 +501,14 @@
       display: block;
     }
 
-    /* Family Split */
+    /* =========================================================
+       SECTION 5: FAMILY BLESSINGS
+       ========================================================= */
+    .sec-family {
+      background-image: linear-gradient(rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.9)), url('bg-floral.jpg');
+      padding: 75px 18px;
+    }
+
     .family-split {
       display: grid;
       grid-template-columns: 1fr 1px 1fr;
@@ -556,7 +525,9 @@
     .family-block h3 { font-size: 38px; color: var(--maroon); margin-bottom: 8px; }
     .family-block p { line-height: 1.7; font-size: 14px; color: var(--text-muted); }
 
-    /* RSVP Card */
+    /* =========================================================
+       SECTION 6: RSVP FORM
+       ========================================================= */
     .rsvp-card {
       max-width: 480px;
       margin: 25px auto 0;
@@ -567,9 +538,7 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       text-align: left;
     }
-    .form-group {
-      margin-bottom: 14px;
-    }
+    .form-group { margin-bottom: 14px; }
     .form-group label {
       display: block;
       font-size: 11px;
@@ -590,11 +559,9 @@
       background: #fffdfa;
       outline: none;
     }
-    .form-group input:focus, .form-group select:focus {
-      border-color: var(--maroon);
-    }
+    .form-group input:focus, .form-group select:focus { border-color: var(--maroon); }
 
-    /* Floating Music Control */
+    /* Music Button */
     .music-btn {
       position: fixed;
       right: 18px;
@@ -641,13 +608,11 @@
     .reveal.show { opacity: 1; transform: none; }
 
     @media (max-width: 600px) {
-      section { padding: 42px 14px 36px; }
       .events-grid { grid-template-columns: 1fr; }
       .family-split { grid-template-columns: 1fr; gap: 18px; }
       .divider-line { width: 120px; height: 1px; margin: 6px auto; }
       .countdown-box { gap: 8px; }
       .count-unit { padding: 10px 4px; }
-      .ganesha-frame { border-radius: 70px 70px 16px 16px; padding: 24px 14px 18px; }
     }
   </style>
 </head>
@@ -655,7 +620,7 @@
 
   <canvas id="fxCanvas"></canvas>
 
-  <!-- 3D Envelope Opening Screen -->
+  <!-- ENVELOPE SCREEN -->
   <div id="envelopeOverlay">
     <div class="envelope-wrapper" id="openEnvelopeTrigger">
       <div class="envelope-flap"></div>
@@ -664,10 +629,10 @@
         <span>K&C</span>
       </div>
       <div class="envelope-letter">
-        <div class="sanskrit" style="color: var(--maroon); font-size: 14px; margin-bottom: 6px;">॥ श्री गणेशाय नमः ॥</div>
-        <h2 class="script" style="font-size: 38px; color: var(--maroon); line-height: 1.1; margin: 4px 0 2px;">Kapil & Chitra</h2>
-        <div class="date-pill" style="font-size: 11px; padding: 4px 14px; margin-top: 10px;">02 · DEC · 2026</div>
-        <p style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-deep); font-weight: 700; margin-top: 12px;">Tap to open Invitation...</p>
+        <div class="sanskrit" style="color: var(--maroon); font-size: 14px; margin-bottom: 4px;">॥ श्री गणेशाय नमः ॥</div>
+        <h2 class="script" style="font-size: 34px; color: var(--maroon); line-height: 1.1; margin: 2px 0;">Kapil & Chitra</h2>
+        <div class="date-pill" style="font-size: 10px; padding: 4px 14px; margin-top: 8px; width: auto;">02 · DEC · 2026</div>
+        <p style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-deep); font-weight: 700; margin-top: 10px;">Opening Invitation...</p>
       </div>
     </div>
   </div>
@@ -679,45 +644,43 @@
   <button class="music-btn" id="musicToggleBtn" aria-label="Toggle background music">𝄢</button>
   <div class="toast" id="toastMsg">Playing Music</div>
 
-  <!-- SECTION 1: Shubharambh -->
-  <!-- PAGE 1: Grand Auspicious Shubharambh (Ganesha & Shloka) -->
+  <!-- PAGE 1: GRAND AUSPICIOUS SHUBHARAMBH -->
   <section class="sec-ganesha">
     <div class="wrap reveal">
       <div class="ganesha-frame">
         <img class="ganesha-card-img" src="ganesh.jpg" alt="Lord Ganesha" onerror="this.style.display='none'">
         
-        <div class="shloka-container">
-          <h1 class="sanskrit shloka-title">
-            ॥ श्री गणेशाय नमः ॥
-          </h1>
-          <p class="sanskrit shloka-text">
-            वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः।<br>
-            निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
-          </p>
-        </div>
+        <h1 class="sanskrit shloka-title">
+          ॥ श्री गणेशाय नमः ॥
+        </h1>
+        <p class="sanskrit shloka-text">
+          वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः।<br>
+          निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
+        </p>
       </div>
-      
-      <!-- Subtle scroll down prompt -->
-      <div class="scroll-hint">
-        <span>✦ ✦ ✦</span>
-      </div>
+
+      <div class="scroll-hint">✦ ✦ ✦</div>
     </div>
   </section>
 
-  <!-- PAGE 2: The Couple (Kapil & Chitra) -->
+  <!-- PAGE 2: GRAND COUPLE SCREEN -->
   <section class="sec-couple">
     <div class="wrap reveal">
-      <span class="kicker">Together with their families</span>
+      <span class="kicker">Celebrating a new chapter in the lives of</span>
+      
       <h2 class="script couple-names">
         <span>Kapil</span>
         <span class="amp">&</span>
         <span>Chitra</span>
       </h2>
+
+      <p class="invite-subtext">with the blessings of their families</p>
+
       <div class="date-pill">02 · DECEMBER · 2026</div>
     </div>
   </section>
 
-  <!-- SECTION 2: Celebrations Itinerary -->
+  <!-- SECTION 3: THE CELEBRATIONS -->
   <section class="sec-itinerary" id="itinerary">
     <div class="wrap">
       <div class="reveal">
@@ -730,9 +693,9 @@
         <article class="event-card card-haldi reveal">
           <div>
             <h3 class="script">Haldi</h3>
-            <div class="datetime">27 November 2026</div>
+            <div class="datetime">28 November 2026</div>
             <div class="timing">10:00 AM Onwards</div>
-            <p class="venue">At Home, Green Park Society<br>Gwalior, Madhya Pradesh</p>
+            <p class="venue">At Home<br>Gwalior, Madhya Pradesh</p>
           </div>
           <div class="card-actions">
             <span class="action-btn" style="opacity: 0.85; cursor: default;">Home Ceremony</span>
@@ -744,8 +707,8 @@
           <div>
             <h3 class="script">Mehendi</h3>
             <div class="datetime">28 November 2026</div>
-            <div class="timing">11:00 AM Onwards</div>
-            <p class="venue">At Home, Green Park Society<br>Gwalior, Madhya Pradesh</p>
+            <div class="timing">04:00 PM Onwards</div>
+            <p class="venue">At Home<br>Gwalior, Madhya Pradesh</p>
           </div>
           <div class="card-actions">
             <span class="action-btn" style="opacity: 0.85; cursor: default;">Home Ceremony</span>
@@ -757,10 +720,10 @@
           <div>
             <h3 class="script">Wedding</h3>
             <div class="datetime">02 December 2026</div>
-            <div class="timing">08:00 AM - 03:00 PM</div>
+            <div class="timing">Baraat: 06:00 PM | Pheras: 08:00 PM</div>
             <p class="venue">
               <strong>Shagun Banquet Hall</strong><br>
-              New Panvel, Navi Mumbai, Maharashtra
+              Panvel, Navi Mumbai, Maharashtra
             </p>
           </div>
           <div class="card-actions">
@@ -793,7 +756,7 @@
           <div>
             <h3 class="script">Reception</h3>
             <div class="datetime">04 December 2026</div>
-            <div class="timing">08:00 PM Onwards</div>
+            <div class="timing">07:30 PM Onwards</div>
             <p class="venue">
               <strong>Devki Grand</strong><br>
               Gwalior, Madhya Pradesh
@@ -809,11 +772,11 @@
     </div>
   </section>
 
-  <!-- SECTION 3: Countdown -->
+  <!-- SECTION 4: COUNTDOWN -->
   <section class="sec-countdown">
     <div class="wrap reveal">
-      <span class="kicker">शुभ लग्न की बेला</span>
-      <h2 class="script" style="font-size: clamp(44px, 6.5vw, 68px); font-weight: 400; color: var(--maroon);">Every Moment Closer to Forever</h2>
+      <span class="kicker">दो दिलों का मंगल मिलन</span>
+      <h2 class="script" style="font-size: clamp(44px, 6.5vw, 68px); font-weight: 400; color: var(--maroon);">Counting Moments to the Seven Vows</h2>
 
       <div class="countdown-box">
         <div class="count-unit"><b id="days">0</b><span>Days</span></div>
@@ -825,7 +788,7 @@
     </div>
   </section>
 
-  <!-- SECTION 4: Family Blessings -->
+  <!-- SECTION 5: OUR FAMILIES -->
   <section class="sec-family">
     <div class="wrap reveal">
       <span class="kicker">With the blessings of our elders</span>
@@ -834,18 +797,18 @@
       <div class="family-split">
         <div class="family-block">
           <h3 class="script">Kapil</h3>
-          <p>Son of<br><b>Smt. Babita & Shri Dharmendra Bandil</b></p>
+          <p>Son of<br><b>Smt. Babita Bandil & Shri Dharmendra Bandil</b></p>
         </div>
         <div class="divider-line"></div>
         <div class="family-block">
           <h3 class="script">Chitra</h3>
-          <p>Daughter of<br><b>Smt. Laxmi & Shri Mahesh Soni</b></p>
+          <p>Daughter of<br><b>Smt. Laxmi Soni & Shri Mahesh Soni</b></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 5: RSVP Form -->
+  <!-- SECTION 6: RSVP -->
   <section style="min-height: 75vh; background: #fffcf8; padding: 60px 18px;">
     <div class="wrap reveal">
       <span class="kicker">Your presence is our blessing</span>
@@ -863,7 +826,7 @@
           <label for="attendanceStatus">Will You Be Attending?</label>
           <select id="attendanceStatus">
             <option value="Joyfully Attending">Joyfully Attending</option>
-            <option value="Sending love and warm wishes from afar ❤️">Sending love & warm wishes from afar ❤️</option>
+            <option value="Sending love & warm wishes from afar ❤️">Sending love & warm wishes from afar ❤️</option>
           </select>
         </div>
         <div class="form-group">
@@ -961,7 +924,7 @@
       }
     });
 
-    const weddingDate = new Date('2026-12-02T08:00:00+05:30');
+    const weddingDate = new Date('2026-12-02T18:00:00+05:30');
     function updateCountdown() {
       const now = new Date();
       const diff = Math.max(0, weddingDate - now);
@@ -985,7 +948,7 @@
       const status = document.getElementById('attendanceStatus').value;
       const msg = document.getElementById('guestMessage').value.trim();
 
-      let text = `Hi Kapil & Chitra,\n\n*Wedding RSVP*\nName: ${name}\nStatus: ${status}`;
+      let text = `Namaste Kapil & Chitra,\n\n*Wedding RSVP*\nName: ${name}\nStatus: ${status}`;
       if (msg) text += `\nWishes: "${msg}"`;
 
       window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
