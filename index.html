@@ -13,7 +13,6 @@
   <meta property="og:image" content="ganesh.jpg">
 
   <style>
-    /* Added Cinzel Decorative for crisp, traditional numerals & headlines */
     @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap');
 
     :root {
@@ -48,18 +47,23 @@
     }
 
     /* =========================================================
-       POINT 1 & 2: 3D ENVELOPE OPENING ANIMATION & SEAL FIX
+       ENVELOPE OVERLAY — DEAD CENTER ON ALL DEVICES
        ========================================================= */
     #envelopeOverlay {
       position: fixed;
       inset: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
       background: radial-gradient(circle at center, #2e0811 0%, #150206 100%);
       z-index: 999;
-      display: grid;
-      place-items: center;
-      perspective: 1200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1000px;
       transition: opacity 0.8s ease 0.8s, visibility 0.8s ease 0.8s;
       padding: 16px;
+      box-sizing: border-box;
     }
     #envelopeOverlay.hidden {
       opacity: 0;
@@ -69,31 +73,32 @@
 
     .envelope-wrapper {
       position: relative;
-      width: min(390px, 92vw);
-      height: 260px;
-      background: #dfcfb7;
+      width: min(360px, 90vw);
+      height: 230px;
+      background: #cbbba1;
       border-radius: 12px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(179,135,40,0.4);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(179,135,40,0.3);
       cursor: pointer;
+      margin: auto;
     }
 
-    /* Envelope Top Flap (Rotates open in 3D) */
+    /* Envelope Top Flap */
     .envelope-flap {
       position: absolute;
       top: 0;
       left: 0;
       width: 0;
       height: 0;
-      border-left: min(195px, 46vw) solid transparent;
-      border-right: min(195px, 46vw) solid transparent;
-      border-top: 140px solid #cfbca0;
+      border-left: min(180px, 45vw) solid transparent;
+      border-right: min(180px, 45vw) solid transparent;
+      border-top: 130px solid #d8c7ad;
       transform-origin: top center;
       transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 4;
-      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.2));
+      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.22));
     }
 
-    /* Envelope Pocket (Front folded triangles) */
+    /* Envelope Pocket */
     .envelope-pocket {
       position: absolute;
       inset: 0;
@@ -109,8 +114,8 @@
       left: 0;
       width: 0;
       height: 0;
-      border-bottom: 150px solid #ecdcc4;
-      border-right: min(195px, 46vw) solid transparent;
+      border-bottom: 140px solid #ecdcc4;
+      border-right: min(180px, 45vw) solid transparent;
     }
     .envelope-pocket::after {
       content: "";
@@ -119,17 +124,17 @@
       right: 0;
       width: 0;
       height: 0;
-      border-bottom: 150px solid #e5d4bb;
-      border-left: min(195px, 46vw) solid transparent;
+      border-bottom: 140px solid #e2d1b8;
+      border-left: min(180px, 45vw) solid transparent;
     }
 
     /* Letter inside sliding up */
     .envelope-letter {
       position: absolute;
-      top: 15px;
-      left: 5%;
-      width: 90%;
-      height: 230px;
+      top: 12px;
+      left: 4%;
+      width: 92%;
+      height: 206px;
       background: #fffdfa;
       border: 1px solid var(--gold);
       border-radius: 8px;
@@ -137,21 +142,21 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 18px;
+      padding: 14px;
       text-align: center;
       box-shadow: 0 4px 15px rgba(0,0,0,0.08);
       transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
       z-index: 2;
     }
 
-    /* Wax Seal button positioned at center edge of flap */
+    /* Wax Seal Button */
     .wax-seal {
       position: absolute;
-      top: 95px;
+      top: 88px;
       left: 50%;
       transform: translateX(-50%);
-      width: 76px;
-      height: 76px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       background: radial-gradient(circle, #85142d 0%, #4a0614 100%);
       border: 2px solid #b38728;
@@ -166,22 +171,15 @@
     .wax-seal:hover {
       transform: translateX(-50%) scale(1.06);
     }
-    /* Fixed: Adjusted font scale so K&C fits cleanly */
     .wax-seal span {
       font-family: "Great Vibes", cursive;
       font-size: 24px;
       color: var(--gold-light);
       user-select: none;
-      letter-spacing: 1px;
       line-height: 1;
     }
 
-    @keyframes pulseMaroon {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(179, 135, 40, 0.5); }
-      50% { box-shadow: 0 0 0 12px rgba(179, 135, 40, 0); }
-    }
-
-    /* When Opened */
+    /* Envelope Opened States */
     #envelopeOverlay.opened .envelope-flap {
       transform: rotateX(180deg);
       z-index: 1;
@@ -191,7 +189,7 @@
       pointer-events: none;
     }
     #envelopeOverlay.opened .envelope-letter {
-      transform: translateY(-90px) scale(1.02);
+      transform: translateY(-80px) scale(1.02);
     }
 
     /* =========================================================
@@ -199,10 +197,13 @@
        ========================================================= */
     section {
       min-height: 100vh;
+      min-height: 100dvh;
       position: relative;
-      display: grid;
-      place-items: center;
-      padding: 70px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 50px 18px 45px;
       background-size: cover;
       background-position: center top;
       background-repeat: no-repeat;
@@ -227,12 +228,12 @@
       text-align: center;
       position: relative;
       z-index: 5;
+      margin: 0 auto;
     }
 
     .script { font-family: "Great Vibes", cursive; }
     .serif { font-family: "Cormorant Garamond", serif; }
     .sanskrit { font-family: "Tiro Devanagari Sanskrit", serif; }
-    /* POINT 3: Consistent elegant numerals */
     .numeral { font-family: "Cinzel Decorative", "DM Sans", serif; font-feature-settings: "lnum" 1; }
 
     .kicker {
@@ -241,64 +242,63 @@
       text-transform: uppercase;
       color: var(--maroon);
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       display: block;
     }
 
+    /* Ganesha Frame — Centered & Protected on Mobile */
     .ganesha-frame {
-      max-width: 480px;
-      width: 100%;
-      margin: 0 auto;
-      background: rgba(255, 253, 248, 0.94);
+      max-width: 460px;
+      width: 94%;
+      margin: 10px auto 18px;
+      background: rgba(255, 253, 248, 0.95);
       border: 2px solid var(--gold);
-      /* Jharokha / Dome curve on top */
-      border-radius: 120px 120px 18px 18px;
-      padding: 38px 24px 28px;
-      box-shadow: 0 16px 45px rgba(0,0,0,0.08);
+      border-radius: 90px 90px 18px 18px;
+      padding: 30px 20px 22px;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.08);
       outline: 1px dashed rgba(179, 135, 40, 0.4);
-      outline-offset: -7px;
+      outline-offset: -6px;
     }
-    }
+
     .ganesha-card-img {
-      max-width: 280px;
-      width: 80%;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-      border: 1px solid var(--gold);
+      max-width: 180px;
+      width: 48%;
+      border-radius: 8px;
+      border: none;
       display: block;
-      margin: 0 auto 18px;
+      margin: 0 auto 12px;
     }
 
     .couple-names {
-      font-size: clamp(58px, 13vw, 120px);
-      line-height: 0.9;
+      font-size: clamp(52px, 12vw, 110px);
+      line-height: 0.92;
       font-weight: 400;
-      margin: 24px 0 14px;
+      margin: 18px 0 12px;
       color: var(--maroon);
     }
     .couple-names .amp {
       display: block;
       font-size: 0.35em;
       color: var(--gold);
-      margin: 8px 0;
+      margin: 6px 0;
     }
 
     .date-pill {
       display: inline-block;
       font-family: "Cinzel Decorative", serif;
-      font-size: clamp(14px, 3.2vw, 20px);
+      font-size: clamp(13px, 3vw, 19px);
       letter-spacing: 3px;
       color: var(--maroon);
       border-top: 2px solid var(--gold);
       border-bottom: 2px solid var(--gold);
-      padding: 8px 24px;
-      margin-top: 15px;
+      padding: 7px 22px;
+      margin-top: 12px;
       font-weight: 700;
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.92);
     }
 
     /* =========================================================
-       POINT 6 & 12: EVENTS GRID & CARD GRAPHICS BACKGROUNDS
+       EVENTS GRID & CARDS
        ========================================================= */
     .events-grid {
       display: grid;
@@ -328,10 +328,9 @@
     }
     .event-card:hover { transform: translateY(-4px); }
 
-    /* Custom Graphic Background Assets */
     .card-haldi {
-  border-top: 6px solid #e6a100;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.7)), url('card-haldi-bg.jpg');
+      border-top: 6px solid #e6a100;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.7)), url('card-haldi-bg.jpg');
     }
     .card-mehendi {
       border-top: 6px solid #2d7a46;
@@ -406,7 +405,7 @@
     .action-btn.primary:hover { background: var(--maroon-dark); }
 
     /* =========================================================
-       POINT 11: MOBILE COUNTDOWN TIMER FIX
+       COUNTDOWN TIMER GRID
        ========================================================= */
     .countdown-box {
       display: grid;
@@ -460,9 +459,7 @@
     .family-block h3 { font-size: 38px; color: var(--maroon); margin-bottom: 8px; }
     .family-block p { line-height: 1.7; font-size: 14px; color: var(--text-muted); }
 
-    /* =========================================================
-       POINT 8: RSVP FORM TO WHATSAPP
-       ========================================================= */
+    /* RSVP Card */
     .rsvp-card {
       max-width: 480px;
       margin: 25px auto 0;
@@ -547,11 +544,13 @@
     .reveal.show { opacity: 1; transform: none; }
 
     @media (max-width: 600px) {
+      section { padding: 42px 14px 36px; }
       .events-grid { grid-template-columns: 1fr; }
       .family-split { grid-template-columns: 1fr; gap: 18px; }
       .divider-line { width: 120px; height: 1px; margin: 6px auto; }
       .countdown-box { gap: 8px; }
       .count-unit { padding: 10px 4px; }
+      .ganesha-frame { border-radius: 70px 70px 16px 16px; padding: 24px 14px 18px; }
     }
   </style>
 </head>
@@ -559,7 +558,7 @@
 
   <canvas id="fxCanvas"></canvas>
 
-  <!-- POINT 1 & 2: 3D Envelope Opening Screen -->
+  <!-- 3D Envelope Opening Screen -->
   <div id="envelopeOverlay">
     <div class="envelope-wrapper" id="openEnvelopeTrigger">
       <div class="envelope-flap"></div>
@@ -571,7 +570,7 @@
         <div class="sanskrit" style="color: var(--maroon); font-size: 14px; margin-bottom: 6px;">॥ श्री गणेशाय नमः ॥</div>
         <h2 class="script" style="font-size: 38px; color: var(--maroon); line-height: 1.1; margin: 4px 0 2px;">Kapil & Chitra</h2>
         <div class="date-pill" style="font-size: 11px; padding: 4px 14px; margin-top: 10px;">02 · DEC · 2026</div>
-        <p style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-deep); font-weight: 700; margin-top: 12px;"> Tap to open Invitation...</p>
+        <p style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-deep); font-weight: 700; margin-top: 12px;">Tap to open Invitation...</p>
       </div>
     </div>
   </div>
@@ -589,18 +588,18 @@
       <div class="ganesha-frame">
         <img class="ganesha-card-img" src="ganesh.jpg" alt="Lord Ganesha" onerror="this.style.display='none'">
         
-        <div style="margin-top: 10px;">
-          <h1 class="sanskrit" style="color: var(--maroon); font-size: clamp(22px, 4.2vw, 30px); font-weight: 700; margin-bottom: 8px;">
+        <div style="margin-top: 8px;">
+          <h1 class="sanskrit" style="color: var(--maroon); font-size: clamp(20px, 4vw, 28px); font-weight: 700; margin-bottom: 6px;">
             ॥ श्री गणेशाय नमः ॥
           </h1>
-          <p class="sanskrit" style="color: var(--text-dark); font-size: clamp(15px, 3.2vw, 19px); line-height: 1.8; font-weight: 500; max-width: 460px; margin: 0 auto;">
+          <p class="sanskrit" style="color: var(--text-dark); font-size: clamp(14px, 3.2vw, 18px); line-height: 1.75; font-weight: 500; max-width: 440px; margin: 0 auto;">
             वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः।<br>
             निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
           </p>
         </div>
       </div>
 
-      <div style="margin-top: 30px;">
+      <div style="margin-top: 20px;">
         <span class="kicker">Together with their families</span>
         <h2 class="script couple-names">
           <span>Kapil</span>
@@ -652,7 +651,7 @@
           <div>
             <h3 class="script">Wedding</h3>
             <div class="datetime">02 December 2026</div>
-            <div class="timing"> 08:00 AM - 03:00 PM</div>
+            <div class="timing">08:00 AM - 03:00 PM</div>
             <p class="venue">
               <strong>Shagun Banquet Hall</strong><br>
               New Panvel, Navi Mumbai, Maharashtra
@@ -665,7 +664,7 @@
           </div>
         </article>
 
-        <!-- Baraat (Added Card) -->
+        <!-- Baraat -->
         <article class="event-card card-baraat reveal">
           <div>
             <h3 class="script">Baraat</h3>
@@ -704,7 +703,7 @@
     </div>
   </section>
 
-  <!-- SECTION 3: Countdown (Indianized phrasing & responsive grid) -->
+  <!-- SECTION 3: Countdown -->
   <section class="sec-countdown">
     <div class="wrap reveal">
       <span class="kicker">शुभ लग्न की बेला</span>
@@ -740,7 +739,7 @@
     </div>
   </section>
 
-  <!-- SECTION 5: Interactive RSVP Form sending to WhatsApp -->
+  <!-- SECTION 5: RSVP Form -->
   <section style="min-height: 75vh; background: #fffcf8; padding: 60px 18px;">
     <div class="wrap reveal">
       <span class="kicker">Your presence is our blessing</span>
@@ -832,7 +831,6 @@
       });
     }
 
-    // Interactive 3D Envelope Trigger
     openEnvelopeTrigger.addEventListener('click', () => {
       envelopeOverlay.classList.add('opened');
       playMusicExperience();
@@ -857,8 +855,7 @@
       }
     });
 
-    // Countdown Logic
-    const weddingDate = new Date('2026-12-02T18:00:00+05:30');
+    const weddingDate = new Date('2026-12-02T08:00:00+05:30');
     function updateCountdown() {
       const now = new Date();
       const diff = Math.max(0, weddingDate - now);
@@ -870,7 +867,6 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // Reveal on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) e.target.classList.add('show');
@@ -878,7 +874,6 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // RSVP WhatsApp Builder
     document.getElementById('sendRsvpBtn').addEventListener('click', () => {
       const name = document.getElementById('guestName').value.trim() || 'Guest';
       const status = document.getElementById('attendanceStatus').value;
@@ -889,7 +884,7 @@
 
       window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
     });
-    // Petals FX
+
     const canvas = document.getElementById('fxCanvas');
     const ctx = canvas.getContext('2d');
     let petals = [];
