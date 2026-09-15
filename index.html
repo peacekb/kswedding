@@ -553,6 +553,91 @@
     }
     .reveal.show { opacity: 1; transform: none; }
 
+    /* Mobile hero: let the Ganesha blessing breathe first,
+       then give the couple names their own large visual moment. */
+    @media (max-width: 600px) {
+      .sec-shubharambh {
+        min-height: auto;
+        padding: 0 14px;
+        justify-content: flex-start;
+      }
+
+      .sec-shubharambh .wrap {
+        max-width: 100%;
+      }
+
+      .hero-ganesha {
+        min-height: 100svh;
+        min-height: 100dvh;
+        width: 100%;
+        max-width: 460px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 34px;
+        padding-bottom: 34px;
+      }
+
+      .hero-ganesha .ganesha-card-img {
+        max-width: 205px;
+        width: 58%;
+        margin-bottom: 18px;
+      }
+
+      .hero-ganesha h1 {
+        font-size: clamp(22px, 6vw, 28px) !important;
+      }
+
+      .hero-ganesha p {
+        font-size: clamp(15px, 4vw, 19px) !important;
+        line-height: 1.9 !important;
+      }
+
+      .hero-names-block {
+        min-height: 100svh;
+        min-height: 100dvh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 60px 8px 70px;
+        margin-top: 0 !important;
+      }
+
+      .hero-names-block .kicker {
+        font-size: 10px;
+        letter-spacing: 3px;
+        margin-bottom: 24px;
+      }
+
+      .hero-names-block .couple-names {
+        font-size: clamp(76px, 23vw, 116px);
+        line-height: 0.82;
+        margin: 0 0 30px;
+      }
+
+      .hero-names-block .couple-names .amp {
+        font-size: 0.30em;
+        margin: 14px 0;
+      }
+
+      .hero-names-block .date-pill {
+        margin-top: 8px;
+        font-size: 12px;
+        letter-spacing: 2.4px;
+        padding: 8px 16px;
+      }
+
+      .hero-names-block .hero-invite-line {
+        max-width: 280px;
+        margin-top: 18px;
+        font-size: 18px;
+        line-height: 1.35;
+      }
+    }
+
     @media (max-width: 600px) {
       section { padding: 42px 14px 36px; }
       .events-grid { grid-template-columns: 1fr; }
@@ -595,7 +680,7 @@
   <!-- SECTION 1: Shubharambh -->
   <section class="sec-shubharambh">
     <div class="wrap reveal">
-      <div class="ganesha-frame">
+      <div class="ganesha-frame hero-ganesha">
         <img class="ganesha-card-img" src="ganesh.jpg" alt="Lord Ganesha" onerror="this.style.display='none'">
         
         <div style="margin-top: 8px;">
@@ -609,7 +694,7 @@
         </div>
       </div>
 
-      <div style="margin-top: 20px;">
+      <div class="hero-names-block" style="margin-top: 20px;">
         <span class="kicker">Together with their families</span>
         <h2 class="script couple-names">
           <span>Kapil</span>
