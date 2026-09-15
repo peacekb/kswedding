@@ -209,17 +209,114 @@
       background-repeat: no-repeat;
     }
 
-    .sec-shubharambh {
-      background-image: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.85)), url('bg-arch.jpg');
+   /* PAGE 1: Ganesha Dedicated Screen */
+    .sec-ganesha {
+      min-height: 100dvh;
+      background-image: linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.85)), url('bg-arch.jpg');
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 18px;
     }
-    .sec-itinerary {
-      background-image: linear-gradient(rgba(255, 252, 245, 0.88), rgba(255, 252, 245, 0.94)), url('bg-mandap.jpg');
+
+    /* Grand Jharokha Arch Frame */
+    .ganesha-frame {
+      max-width: 440px;
+      width: 90vw;
+      margin: 0 auto;
+      background: rgba(255, 253, 248, 0.96);
+      border: 2px solid var(--gold);
+      /* Royal Jharokha Arch Top */
+      border-radius: 120px 120px 20px 20px;
+      padding: 42px 24px 34px;
+      box-shadow: 0 16px 45px rgba(110, 16, 36, 0.12), 0 0 0 6px rgba(255,255,255,0.6);
+      outline: 1px dashed rgba(179, 135, 40, 0.4);
+      outline-offset: -8px;
+      backdrop-filter: blur(5px);
     }
-    .sec-countdown {
-      background-image: linear-gradient(rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.9)), url('bg-hero.jpg');
+
+    /* Ganesha icon is now big and proud */
+    .ganesha-card-img {
+      max-width: 190px;
+      width: 55%;
+      border-radius: 12px;
+      display: block;
+      margin: 0 auto 18px;
+      border: none;
+      box-shadow: none;
+      filter: drop-shadow(0 4px 12px rgba(179, 135, 40, 0.25));
     }
-    .sec-family {
-      background-image: linear-gradient(rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.9)), url('bg-floral.jpg');
+
+    .shloka-title {
+      color: var(--maroon);
+      font-size: clamp(24px, 5.5vw, 34px);
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .shloka-text {
+      color: var(--text-dark);
+      font-size: clamp(16px, 4vw, 21px);
+      line-height: 1.9;
+      font-weight: 500;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .scroll-hint {
+      margin-top: 24px;
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 4px;
+      opacity: 0.8;
+      animation: bounceSlow 2s infinite ease-in-out;
+    }
+    @keyframes bounceSlow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* PAGE 2: Grand Couple Screen */
+    .sec-couple {
+      min-height: 100dvh;
+      background-image: linear-gradient(rgba(255,255,255,0.78), rgba(255,255,255,0.88)), url('bg-arch.jpg');
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 18px;
+    }
+
+    .couple-names {
+      font-size: clamp(64px, 16vw, 130px);
+      line-height: 0.9;
+      font-weight: 400;
+      margin: 20px 0 16px;
+      color: var(--maroon);
+    }
+
+    .couple-names .amp {
+      display: block;
+      font-size: 0.35em;
+      color: var(--gold);
+      margin: 10px 0;
+    }
+
+    .date-pill {
+      display: inline-block;
+      font-family: "Cinzel Decorative", serif;
+      font-size: clamp(15px, 3.8vw, 22px);
+      letter-spacing: 3.5px;
+      color: var(--maroon);
+      border-top: 2px solid var(--gold);
+      border-bottom: 2px solid var(--gold);
+      padding: 10px 30px;
+      margin-top: 18px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     }
 
     .wrap {
@@ -583,31 +680,40 @@
   <div class="toast" id="toastMsg">Playing Music</div>
 
   <!-- SECTION 1: Shubharambh -->
-  <section class="sec-shubharambh">
+  <!-- PAGE 1: Grand Auspicious Shubharambh (Ganesha & Shloka) -->
+  <section class="sec-ganesha">
     <div class="wrap reveal">
       <div class="ganesha-frame">
         <img class="ganesha-card-img" src="ganesh.jpg" alt="Lord Ganesha" onerror="this.style.display='none'">
         
-        <div style="margin-top: 8px;">
-          <h1 class="sanskrit" style="color: var(--maroon); font-size: clamp(20px, 4vw, 28px); font-weight: 700; margin-bottom: 6px;">
+        <div class="shloka-container">
+          <h1 class="sanskrit shloka-title">
             ॥ श्री गणेशाय नमः ॥
           </h1>
-          <p class="sanskrit" style="color: var(--text-dark); font-size: clamp(14px, 3.2vw, 18px); line-height: 1.75; font-weight: 500; max-width: 440px; margin: 0 auto;">
+          <p class="sanskrit shloka-text">
             वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः।<br>
             निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
           </p>
         </div>
       </div>
-
-      <div style="margin-top: 20px;">
-        <span class="kicker">Together with their families</span>
-        <h2 class="script couple-names">
-          <span>Kapil</span>
-          <span class="amp">&</span>
-          <span>Chitra</span>
-        </h2>
-        <div class="date-pill">02 · DECEMBER · 2026</div>
+      
+      <!-- Subtle scroll down prompt -->
+      <div class="scroll-hint">
+        <span>✦ ✦ ✦</span>
       </div>
+    </div>
+  </section>
+
+  <!-- PAGE 2: The Couple (Kapil & Chitra) -->
+  <section class="sec-couple">
+    <div class="wrap reveal">
+      <span class="kicker">Together with their families</span>
+      <h2 class="script couple-names">
+        <span>Kapil</span>
+        <span class="amp">&</span>
+        <span>Chitra</span>
+      </h2>
+      <div class="date-pill">02 · DECEMBER · 2026</div>
     </div>
   </section>
 
