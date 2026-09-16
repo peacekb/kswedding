@@ -301,6 +301,73 @@
       background-image:
         linear-gradient(rgba(255,250,242,0.70), rgba(255,250,242,0.88)),
         url('bg-hero.jpg');
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: 62px 22px 112px;
+      justify-content: center;
+    }
+
+    .sec-countdown .wrap {
+      transform: translateY(-14px);
+    }
+
+    .sec-countdown .kicker {
+      font-size: 20px;
+      letter-spacing: 0.04em;
+      line-height: 1.35;
+      text-transform: none;
+      margin-bottom: 8px;
+    }
+
+    .sec-countdown .countdown-title {
+      margin-top: 0;
+      margin-bottom: 24px;
+      line-height: 1.05;
+    }
+
+    .sec-countdown .countdown-location {
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 15px;
+      background: rgba(255,255,255,0.9);
+      display: inline-block;
+      padding: 7px 20px;
+      border-radius: 20px;
+      margin-top: 18px;
+    }
+
+    .countdown-scroll-cue {
+      position: absolute;
+      bottom: 26px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      color: var(--gold-deep);
+      opacity: 0.72;
+      z-index: 6;
+      pointer-events: none;
+    }
+
+    .countdown-scroll-cue .cue-arrow {
+      font-size: 20px;
+      line-height: 1;
+      animation: countdownScrollCue 1.8s ease-in-out infinite;
+    }
+
+    @keyframes countdownScrollCue {
+      0%, 100% {
+        transform: translateY(0);
+        opacity: 0.45;
+      }
+      50% {
+        transform: translateY(5px);
+        opacity: 1;
+      }
     }
 
     .sec-family {
@@ -384,7 +451,7 @@
 
     .ganesha-card-img {
       max-width: 225px;
-      width: 55%;
+      width: 85%;
       border-radius: 8px;
       border: none;
       display: block;
@@ -428,7 +495,7 @@
     .date-pill {
       display: inline-block;
       font-family: "Cinzel Decorative", serif;
-      font-size: clamp(12px, 3vw, 18px);
+      font-size: clamp(14px, 3.2vw, 20px);
       letter-spacing: 3px;
       color: var(--maroon);
       border-top: 1px solid var(--gold);
@@ -868,7 +935,7 @@
 
       .ganesha-card-img {
         max-width: 310px;
-        width: 72%;
+        width: 90%;
         margin-bottom: 18px;
       }
 
@@ -968,9 +1035,32 @@
 
       .event-card h3 { font-size: 46px; }
 
+      .sec-countdown {
+        min-height: 92vh;
+        min-height: 92dvh;
+        padding: 58px 14px 108px;
+      }
+
+      .sec-countdown .wrap {
+        transform: translateY(-10px);
+      }
+
+      .sec-countdown .kicker {
+        font-size: 18px;
+        letter-spacing: 0.025em;
+        line-height: 1.35;
+        margin-bottom: 7px;
+      }
+
+      .sec-countdown .countdown-title {
+        font-size: clamp(38px, 10.5vw, 52px) !important;
+        line-height: 1.06;
+        margin-bottom: 20px;
+      }
+
       .countdown-box {
         gap: 0;
-        margin-top: 31px;
+        margin-top: 26px;
         padding: 5px;
         border-radius: 15px;
       }
@@ -978,6 +1068,28 @@
       .count-unit { padding: 15px 3px; }
       .count-unit b { font-size: clamp(22px, 7vw, 33px); }
       .count-unit span { font-size: 7.5px; letter-spacing: 1.2px; }
+
+      .sec-countdown .countdown-location {
+        font-size: 13px;
+        padding: 7px 15px;
+        margin-top: 16px;
+      }
+
+      .countdown-scroll-cue {
+        bottom: 21px;
+        font-size: 8px;
+        letter-spacing: 0.15em;
+      }
+
+      .countdown-scroll-cue .cue-arrow {
+        font-size: 18px;
+      }
+
+      .hero-names-block .date-pill {
+        font-size: 12px;
+        letter-spacing: 2.1px;
+        padding: 9px 16px;
+      }
 
       .family-split {
         grid-template-columns: 1fr;
@@ -1062,7 +1174,7 @@
       </div>
 
       <div style="margin-top: 20px;">
-        <span class="kicker">Together with their families</span>
+        <span class="kicker">Together with our families</span>
         <h2 class="script couple-names">
           <span>Kapil</span>
           <span class="amp">&</span>
@@ -1167,21 +1279,50 @@
   </section>
 
   <!-- SECTION 3: Countdown -->
-  <section class="sec-countdown">
-    <div class="wrap reveal">
-      <span class="kicker">शुभ लग्न की बेला</span>
-      <h2 class="script" style="font-size: clamp(44px, 6.5vw, 68px); font-weight: 400; color: var(--maroon);">Every Moment Closer to Forever</h2>
+<section class="sec-countdown">
+  <div class="wrap reveal">
+    
+    <span class="kicker">शुभ लग्न की बेला</span>
 
-      <div class="countdown-box">
-        <div class="count-unit"><b id="days">0</b><span>Days</span></div>
-        <div class="count-unit"><b id="hours">0</b><span>Hours</span></div>
-        <div class="count-unit"><b id="minutes">0</b><span>Mins</span></div>
-        <div class="count-unit"><b id="seconds">0</b><span>Secs</span></div>
+    <h2 class="script countdown-title">
+      Every Moment Closer to Forever
+    </h2>
+
+    <div class="countdown-box">
+      <div class="count-unit">
+        <b id="days">0</b>
+        <span>Days</span>
       </div>
-      <p style="color: var(--text-dark); font-weight: 600; font-size: 13.5px; background: rgba(255,255,255,0.9); display: inline-block; padding: 6px 18px; border-radius: 20px;">02 December 2026 · Shagun Banquet, Panvel</p>
-    </div>
-  </section>
 
+      <div class="count-unit">
+        <b id="hours">0</b>
+        <span>Hours</span>
+      </div>
+
+      <div class="count-unit">
+        <b id="minutes">0</b>
+        <span>Mins</span>
+      </div>
+
+      <div class="count-unit">
+        <b id="seconds">0</b>
+        <span>Secs</span>
+      </div>
+    </div>
+
+    <p class="countdown-location">
+      02 December 2026 · Shagun Banquet, Panvel
+    </p>
+
+  </div>
+
+  <!-- Subtle indication that the invitation continues -->
+  <div class="countdown-scroll-cue">
+    <span>CONTINUE</span>
+    <span class="cue-arrow">↓</span>
+  </div>
+
+</section>
   <!-- SECTION 4: Family Blessings -->
   <section class="sec-family">
     <div class="wrap reveal">
